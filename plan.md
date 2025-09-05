@@ -59,8 +59,4 @@ goal: make the app look good and deploy it
 2 test test all crud operations ensure validation works
 
 3 deploy deploy frontend to vercel update api url, in frontend to point to deployed backend
-
-
-
-
-tumo well done 
+ 

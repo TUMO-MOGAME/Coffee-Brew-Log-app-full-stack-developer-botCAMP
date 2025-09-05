@@ -12,3 +12,6 @@
 8 creating utility functions src/lib/utilis.ts
 9 building basic ui components (src/components/ui/button.tsx)
 10 src/componets/ui/label.tsx defines a custom Label component
+11 create a simple test components to check if ui components are working properly
+12 update main to test componets 
+![alt text](image.png) all is working nice button with lable and other components 

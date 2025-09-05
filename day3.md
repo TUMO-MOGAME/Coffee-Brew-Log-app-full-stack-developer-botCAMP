@@ -10,3 +10,5 @@
 6 postcss.config.cjs
 7 src/index.css
 8 creating utility functions src/lib/utilis.ts
+9 building basic ui components (src/components/ui/button.tsx)
+10 src/componets/ui/label.tsx defines a custom Label component

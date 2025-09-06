@@ -15,3 +15,20 @@
 11 create a simple test components to check if ui components are working properly
 12 update main to test componets 
 ![alt text](image.png) all is working nice button with lable and other components 
+13creating basic app structure (src/app.tsx)
+
+14 creating Toaster system Setup (the toaster system provides user feedback when user creat, edit or delete brew entries)
+    toast.tsx core toast ui components
+    user-toast.ts hook that manages toast and provides toast functions
+    toaster.tsx container that renders all active toasts
+    sonner.tsx altenative toast system
+15 building the core Toast component (src/components/ui/toast.tsx)
+16 building the toast state management (src/hooks/use-toast.tsx)
+17 building the alternative toast system (src/components/ui/sonner.tsx)
+18 test all toast systems src/components/ui/TestToast.tsx
+19 update src/app.tsx to use the toast system
+
+defining a Toast component, which is a notification system for your React app (components/ui/toast.tsx)
+defines a Toaster component, which is a notification system for your React app components/ui/toaster
+components/ui/sonner
+components/ui/tooltip

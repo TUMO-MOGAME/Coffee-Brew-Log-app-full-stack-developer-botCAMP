@@ -11,10 +11,10 @@ createRoot(document.getElementById('root')!).render(
 )
 
 // for testing the componets 
-import TestComponents from './components/testcomponents.tsx'
-import './index.css'
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <TestComponents />
-  </StrictMode>,
-)
+// import TestComponents from './components/testcomponents.tsx'
+// import './index.css'
+// createRoot(document.getElementById('root')!).render(
+//   <StrictMode>
+//     <TestComponents />
+//   </StrictMode>,
+// )

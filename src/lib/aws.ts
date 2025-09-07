@@ -26,21 +26,27 @@ export type brew_entry = {
     updated_at?: string
 }
 // this is a type that represents the different brew methods that are available and they are immutable (as const) will enforce that 
-export const brew_method = {
-    'French_Press': 'French Press',
-    'Pour Over': 'Pour Over',
-    'Espresso': 'Espresso',
-    'AeroPress': 'AeroPress',
-    'Cold Brew': 'Cold Brew',
-    'Chemex': 'Chemex',
-    'V60': 'V60',
-    'Moka Pot': 'Moka Pot',
-    'Drip Coffee': 'Drip Coffee',
-} as const 
+const brew_method = [
+  "French Press",
+  "Pour Over",
+  "Espresso",
+  "AeroPress",
+  "Cold Brew",
+  "Chemex",
+  "V60",
+  "Moka Pot",
+  "Drip Coffee",
+] as const; 
 
-export type brew_method = typeof brew_method[keyof typeof brew_method]
+export type BrewMethod = typeof brew_method[number];
+brew_method.map((method: BrewMethod) => {
+  console.log(method);
+});
+export function isBrewMethod(x: string): x is BrewMethod {
+  return (brew_method as readonly string[]).includes(x);
+}
 
-// aws dynamodb operations 
+                     // aws dynamodb operations 
 export const aws_operations = {
     async create_brew_entry(brew_data: Omit<brew_entry, 'id' | 'created_at' | 'updated_at'>): Promise<brew_entry> {
         const id = Date.now().toString()

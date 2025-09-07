@@ -27,8 +27,3 @@
 17 building the alternative toast system (src/components/ui/sonner.tsx)
 18 test all toast systems src/components/ui/TestToast.tsx
 19 update src/app.tsx to use the toast system
-
-defining a Toast component, which is a notification system for your React app (components/ui/toast.tsx)
-defines a Toaster component, which is a notification system for your React app components/ui/toaster
-components/ui/sonner
-components/ui/tooltip

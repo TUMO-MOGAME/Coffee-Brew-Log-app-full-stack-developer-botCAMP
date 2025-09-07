@@ -20,5 +20,8 @@
     badge.tsx
     avatar.tsx
 9 group 2B
+10 group 2C and 3A
+11 group 3B and 3C
+12 
 
 

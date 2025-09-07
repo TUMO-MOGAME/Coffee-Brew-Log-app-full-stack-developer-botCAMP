@@ -10,4 +10,14 @@
     slider.tsx - for rating
     radio-group.tsx - alternative for bre method selection
     checkbox.tsx - for filterting options
+6 group 1C: input enhancement componets
+    input-otp.tsx - 
+    switch.tsx - for dark mode toggle
+    separator.tsx - for form section dividers
+7 phase 2 - Data display components group 2A: core display components
+8 group 2A: core display components
+    table.tsx
+    badge.tsx
+    avatar.tsx
+
 

@@ -6,11 +6,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import TestToaster from "./components/testToaster";
 import { Coffee } from "lucide-react";
 import FormcomponetsTesting from "./components/testing_codes/formcomponetsTesting";
-import type { brew_entry } from "./lib/aws";
+import type { BrewEntry} from "./lib/aws";
 
 
 const App = () => {
-  const [brews, setBrews] = useState<brew_entry[] | null[]>([])
+  const [brews, setBrews] = useState<BrewEntry[] | null[]>([])
   const [showTest, setShowTest] = useState(false)
 
   return (

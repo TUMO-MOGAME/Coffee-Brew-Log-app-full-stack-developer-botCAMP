@@ -22,6 +22,7 @@
 9 group 2B
 10 group 2C and 3A
 11 group 3B and 3C
-12 
+12 completed all the ui componets 
+13 now moving to the next phase of integrating those components into the app
 
 

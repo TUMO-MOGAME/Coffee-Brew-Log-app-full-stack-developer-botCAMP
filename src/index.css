@@ -31,6 +31,11 @@
     --shadow-coffee: 0 10px 30px -10px hsl(25, 35%, 20% / 0.3);
     --shadow-warm: 0 4px 20px -4px hsl(30, 45%, 75% / 0.4);
     --radius: 0.75rem;
+
+    --bean-dark: 25 20% 15%;
+    --bean-medium: 25 35% 20%;
+    --bean-roasted: 15 40% 18%;
+    --burlap: 40 35% 85%;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -189,5 +194,126 @@
   .animate-steam-rise-3 {
     animation: steam-rise-3 1.8s ease-out infinite;
     animation-delay: 0.6s;
+  }
+  .bg-coffee-beans {
+    background: linear-gradient(135deg, hsl(var(--bean-dark)), hsl(var(--bean-medium)));
+    position: relative;
+  }
+
+  .bg-coffee-beans::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 3px 6px at 25% 35%, hsl(var(--bean-roasted)) 0%, transparent 60%),
+      radial-gradient(ellipse 2px 4px at 75% 65%, hsl(var(--bean-dark)) 0%, transparent 60%),
+      radial-gradient(ellipse 3px 5px at 45% 75%, hsl(var(--bean-medium)) 0%, transparent 60%),
+      radial-gradient(ellipse 2px 4px at 85% 25%, hsl(var(--bean-roasted)) 0%, transparent 60%),
+      radial-gradient(ellipse 2px 5px at 65% 45%, hsl(var(--bean-dark)) 0%, transparent 60%);
+    background-size: 200px 200px, 180px 180px, 160px 160px, 220px 220px, 190px 190px;
+    background-position: 0 0, 50px 50px, 100px 100px, 150px 150px, 200px 200px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .bg-coffee-beans::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(45deg, transparent 48%, hsl(var(--burlap)) 49%, hsl(var(--burlap)) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, hsl(var(--burlap)) 49%, hsl(var(--burlap)) 51%, transparent 52%);
+    background-size: 20px 20px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-warm);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
+  }
+
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-gentle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .input-focus-glow:focus {
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1), var(--shadow-warm);
+    border-color: hsl(var(--primary));
+  }
+
+  .card-hover-glow:hover {
+    box-shadow: var(--shadow-coffee);
+    transform: translateY(-1px);
+  }
+
+  .section-divider {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.2), transparent);
+    height: 1px;
   }
 }

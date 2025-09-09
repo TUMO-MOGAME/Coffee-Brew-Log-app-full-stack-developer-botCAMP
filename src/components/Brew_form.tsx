@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Input } from './ui/input'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import type { BrewEntry } from '@/lib/aws'
-import {brewMethods } from '@/lib/aws'
+import type { BrewEntry, BrewMethod } from '@/lib/aws'
+import { brewMethods } from '@/lib/aws'
 import { Coffee, Star } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
-import type { BrewMethod } from "@/lib/aws";
 
 interface BrewFormProps {
   onSubmit: (brew: Omit<BrewEntry, 'id' | 'created_at' | 'updated_at'>) => Promise<void>
@@ -72,7 +71,6 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
       })
       
       if (!isEditing) {
-        // Reset form for new entries
         setFormData({
           coffee_type: '',
           brew_method: '',
@@ -103,16 +101,23 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
   }
 
   return (
-    <Card className="shadow-warm hover-lift animate-scale-in">
-      <CardHeader className="bg-gradient-cream rounded-t-lg">
-        <CardTitle className="flex items-center gap-2 text-primary">
-          <Coffee className="h-5 w-5" />
+    <Card className="shadow-warm hover-lift animate-scale-in border-0 overflow-hidden">
+      <CardHeader className="bg-gradient-cream rounded-t-lg border-b border-primary/10">
+        <CardTitle className="flex items-center gap-3 text-primary text-xl">
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Coffee className="h-6 w-6" />
+          </div>
           {isEditing ? 'Edit Brew Entry' : 'Log New Brew'}
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-6 space-y-4">
-        <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <CardContent className="p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-primary border-b border-primary/20 pb-2">
+                Coffee Details
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="coffee_type">Coffee Type *</Label>
               <Input
@@ -120,7 +125,7 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
                 value={formData.coffee_type}
                 onChange={(e) => updateField('coffee_type', e.target.value)}
                 placeholder="e.g., Ethiopian Yirgacheffe"
-                className={errors.coffee_type ? 'border-destructive' : ''}
+                className={`input-focus-glow ${errors.coffee_type ? 'border-destructive' : ''}`}
               />
               {errors.coffee_type && <p className="text-sm text-destructive">{errors.coffee_type}</p>}
             </div>
@@ -168,7 +173,14 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
               />
               {errors.ratio && <p className="text-sm text-destructive">{errors.ratio}</p>}
             </div>
+          </div>
+        </div>
 
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-primary border-b border-primary/20 pb-2">
+            Brewing Parameters
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             <div className="space-y-2">
               <Label htmlFor="water_temp">Water Temperature (°F) *</Label>
               <Input
@@ -196,9 +208,15 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
               {errors.brew_time && <p className="text-sm text-destructive">{errors.brew_time}</p>}
             </div>
           </div>
+        </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="rating">Rating (1-5 stars) *</Label>
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-primary border-b border-primary/20 pb-2">
+            Experience & Notes
+          </h3>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="rating">Rating (1-5 stars) *</Label>
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -233,8 +251,10 @@ export default function BrewForm({ onSubmit, initialData, isEditing, onCancel }:
               rows={3}
             />
           </div>
+        </div>
+      </div>
 
-          <div className="flex flex-col-reverse sm:flex-row gap-2 pt-4">
+      <div className="flex flex-col-reverse sm:flex-row gap-2 pt-6 border-t border-primary/10">
             {isEditing && onCancel && (
               <Button 
                 type="button" 

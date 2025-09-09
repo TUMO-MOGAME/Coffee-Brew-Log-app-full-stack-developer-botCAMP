@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type {BrewEntry } from '@/lib/aws'
 import BrewForm from '@/components/Brew_form'
 import BrewList from '@/components/Brew_list'
@@ -27,10 +26,10 @@ const Index = () => {
       )
       setBrews(sortedBrews)
     } catch (error) {
-      console.error('Error loading brews from AWS:', error)
+      console.info('AWS not configured - using local storage fallback')
       toast({
-        title: "AWS Connection Info",
-        description: "Using local storage. Configure AWS DynamoDB for cloud persistence.",
+        title: "Local Storage Mode",
+        description: "Your brews are saved locally. Configure AWS DynamoDB for cloud sync.",
         variant: "default"
       })
       const localBrews = localStorageOperations.getBrews()
@@ -198,9 +197,9 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="pl-28 pr-8 py-8">
+        <div className="pl-32 pr-8 py-8 min-h-screen bg-coffee-beans">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-8 animate-slide-up">
+            <div className="mb-8 animate-slide-up bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-warm border border-primary/10">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-4xl font-bold text-primary mb-2">
@@ -235,13 +234,15 @@ const Index = () => {
                   />
                 </div>
               )}
-              
+
               {activeTab === 'view' && (
-                <BrewList
-                  brews={brews}
-                  onEdit={handleEditBrew}
-                  onDelete={handleDeleteBrew}
-                />
+                <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-6 shadow-warm border border-primary/10">
+                  <BrewList
+                    brews={brews}
+                    onEdit={handleEditBrew}
+                    onDelete={handleDeleteBrew}
+                  />
+                </div>
               )}
             </div>
           </div>

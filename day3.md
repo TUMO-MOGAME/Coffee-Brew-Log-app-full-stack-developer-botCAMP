@@ -27,3 +27,5 @@
 17 building the alternative toast system (src/components/ui/sonner.tsx)
 18 test all toast systems src/components/ui/TestToast.tsx
 19 update src/app.tsx to use the toast system
+
+# **learn 2 hours of full stack*

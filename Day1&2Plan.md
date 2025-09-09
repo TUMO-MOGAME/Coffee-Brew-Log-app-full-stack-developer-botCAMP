@@ -13,4 +13,5 @@
 7 creating the simple test file to verify the crud operations work test_aws.html
 8 set up basic project structure vite.config.ts in the main directory -- while importing path face the issue solution was that i do the following (npm i -D @types/node)
 
+# **learn 2 hours of full stack*
 

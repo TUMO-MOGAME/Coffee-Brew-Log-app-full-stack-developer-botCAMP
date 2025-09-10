@@ -197,7 +197,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="pl-32 pr-8 py-8 min-h-screen bg-coffee-beans">
+        <div className="pl-32 pr-8 py-8 min-h-screen bg-coffee-beans relative">
           <div className="max-w-6xl mx-auto">
             <div className="mb-8 animate-slide-up bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-warm border border-primary/10">
               <div className="flex items-center justify-between">

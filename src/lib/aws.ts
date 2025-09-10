@@ -6,9 +6,6 @@ AWS.config.update({
   secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY
 })
 
-const dynamodb = new AWS.DynamoDB.DocumentClient()
-const TABLE_NAME = import.meta.env.VITE_AWS_DYNAMODB_TABLE || 'coffee-brews'
-
 export type BrewEntry = {
   id?: string
   coffee_type: string
@@ -37,19 +34,19 @@ export const brewMethods = [
 
 export type BrewMethod = typeof brewMethods[number]
 export const awsOperations = {
-  async createBrew(brewData: Omit<BrewEntry, 'id' | 'created_at' | 'updated_at'>): Promise<BrewEntry> {
+  async createBrew(_brewData: Omit<BrewEntry, 'id' | 'created_at' | 'updated_at'>): Promise<BrewEntry> {
     throw new Error('AWS not configured - using local storage fallback')
   },
   async getAllBrews(): Promise<BrewEntry[]> {
     throw new Error('AWS not configured - using local storage fallback')
   },
-  async getBrewById(id: string): Promise<BrewEntry | null> {
+  async getBrewById(_id: string): Promise<BrewEntry | null> {
     throw new Error('AWS not configured - using local storage fallback')
   },
-  async updateBrew(id: string, brewData: Omit<BrewEntry, 'id' | 'created_at' | 'updated_at'>): Promise<BrewEntry> {
+  async updateBrew(_id: string, _brewData: Omit<BrewEntry, 'id' | 'created_at' | 'updated_at'>): Promise<BrewEntry> {
     throw new Error('AWS not configured - using local storage fallback')
   },
-  async deleteBrew(id: string): Promise<void> {
+  async deleteBrew(_id: string): Promise<void> {
     throw new Error('AWS not configured - using local storage fallback')
   }
 }
@@ -97,10 +94,6 @@ export const localStorageOperations = {
     this.saveBrews(filteredBrews)
   }
 }
-
-
-
-
 
 
 

@@ -18,12 +18,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip']
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
+          aws: ['aws-sdk', '@aws-sdk/client-dynamodb', '@aws-sdk/lib-dynamodb'],
+          router: ['react-router-dom'],
+          forms: ['react-hook-form', '@hookform/resolvers', 'zod']
         }
       }
     }

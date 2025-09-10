@@ -1,11 +1,8 @@
 import { useState } from "react";
 import {useForm} from "react-hook-form"
-import { Card, CardContent, CardHeader,CardTitle}from "@/components/ui/card"; 
+import { Card, CardContent, CardHeader,CardTitle}from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "../ui/textarea";
-import { Form } from "react-hook-form";
 
 
 
@@ -27,8 +24,7 @@ type testFormData = {
     brewer_tds:string;
 }
 export default function FormcomponetsTesting() {
-    const [selectedMethod, setSelectedMethod] = useState<string>("")
-    const [notes, setNotes] = useState("")
+    const [_selectedMethod, setSelectedMethod] = useState<string>("")
 
     const form = useForm<testFormData>({
     defaultValues: {
